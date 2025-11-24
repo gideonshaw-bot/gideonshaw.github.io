@@ -1,269 +1,68 @@
-<html> <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gideon Shaw</title>
-<style>
-  body {
-    margin: 0;
-    font-family: "Inter", "Helvetica Neue", sans-serif;
-    background: #fff;
-    color: #000;
-    display: flex;
-    justify-content: center;
-    padding: 40px 0;
-  }
-  .card {
-    border: 2px solid #000;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 700px;
-    width: 90%;
-    box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .info {
-    flex: 1;
-    min-width: 250px;
-  }
-  h1 {
-    margin: 0;
-    font-size: 2.4rem;
-    font-family: "Georgia", serif;
-  }
-  .titles {
-    font-size: 1rem;
-    color: #333;
-    margin-top: 4px;
-    line-height: 1.4;
-  }
-  .titles a {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-  }
-  .titles a:hover {
-    border-bottom: 1px solid #000;
-  }
-  .links {
-    margin-top: 10px;
-  }
-  .links a {
-    margin-right: 10px;
-    text-decoration: none;
-    color: #000;
-    border: 1px solid #000;
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-  }
-  .links a:hover {
-    background: #000;
-    color: #fff;
-  }
-  .photo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 10px auto;
-    flex-shrink: 0;
-  }
-  .photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  hr {
-    margin: 25px 0;
-    border: none;
-    border-top: 1px solid #000;
-  }
-  .game-section {
-    text-align: center;
-  }
-  canvas {
-    background: #eee;
-    border: 1px solid #000;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-  }
-  .controls {
-    margin-top: 10px;
-  }
-  .score-board {
-    margin-top: 10px;
-    border-top: 1px solid #000;
-    padding-top: 10px;
-    font-family: monospace;
-  }
-  .score-board h4 {
-    margin: 5px 0;
-  }
-  .score-board ol {
-    padding-left: 20px;
-    margin: 0;
-  }
-
-  @media (max-width: 600px) {
-    header {
-      flex-direction: column;
-      align-items: center;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gideon Shaw</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #111;
       text-align: center;
+      margin: 0;
+      padding: 40px;
     }
-    .photo {
-      margin-top: 20px;
+    .card {
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 480px;
     }
-  }
-</style>
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin: 0.4em 0;
+    }
+    p {
+      font-size: 1.1em;
+      margin: 0.3em 0 1em 0;
+    }
+    a.button {
+      display: inline-block;
+      border: 1px solid #111;
+      border-radius: 30px;
+      padding: 8px 18px;
+      margin: 5px;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
+    a.button:hover {
+      background: #111;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
   <div class="card">
-    <header>
-      <div class="info">
-        <h1>Gideon Shaw</h1>
-        <div class="titles">
-          General Partner, <a href="https://elements.vc" target="_blank">Elements VC</a><br>
-          Founder, <a href="https://invocap.com" target="_blank">Invocap</a>
-        </div>
-        <div class="links">
-          <a href="https://elements.vc" target="_blank">Elements VC</a>
-          <a href="https://invocap.com" target="_blank">Invocap</a>
-          <a href="https://linkedin.com/in/gideonshaw" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-      <div class="photo">
-        <img src="High%20House%20%D7%A6%D7%99%D7%9C%D7%95%D7%9E%D7%99%20%D7%AA%D7%93%D7%9E%D7%99%D7%AA_3060.jpg" alt="Gideon Shaw" />
-      </div>
-    </header>
-
-    <hr />
-
-    <div class="game-section">
-      <canvas id="pongCanvas" width="500" height="300"></canvas>
-      <div class="controls">
-        <button id="playBtn">Restart</button>
-        <span id="currentScore">Score: 0</span>
-      </div>
-      <div class="score-board">
-        <h4>Top 5 High Scores</h4>
-        <ol id="highScoresList"><li>—</li><li>—</li><li>—</li><li>—</li><li>—</li></ol>
-      </div>
+    <img src="030A8192.jpg" alt="Portrait of Gideon Shaw" />
+    <h1>Gideon Shaw</h1>
+    <p>General Partner, <a href="https://www.elementsvc.com" target="_blank">Elements VC</a><br>
+       Founder, <a href="https://www.invocap.com" target="_blank">Invocap</a></p>
+    <div>
+      <a href="https://www.linkedin.com/in/gideonshaw/" class="button" target="_blank">LinkedIn</a>
+      <a href="https://www.elementsvc.com" class="button" target="_blank">Elements VC</a>
+      <a href="https://www.invocap.com" class="button" target="_blank">Invocap</a>
     </div>
   </div>
-
-<script>
-  const canvas = document.getElementById("pongCanvas");
-  const ctx = canvas.getContext("2d");
-  const playBtn = document.getElementById("playBtn");
-  const currentScoreDiv = document.getElementById("currentScore");
-  const highScoresList = document.getElementById("highScoresList");
-
-  // GitHub config
-  const GITHUB_USER = "gideonshaw-bot";
-  const GITHUB_REPO = "gideonshaw.github.io";
-  const HIGHSCORES_PATH = "data/highscores.json";
-  const GITHUB_TOKEN = "PASTE_YOUR_PERSONAL_ACCESS_TOKEN_HERE";
-
-  let leftPaddle, rightPaddle, ball;
-  let upPressed = false, downPressed = false;
-  let score = 0;
-
-  function initGame() {
-    leftPaddle = { x: 10, y: canvas.height/2 - 30, w: 10, h: 60 };
-    rightPaddle = { x: canvas.width - 20, y: canvas.height/2 - 30, w: 10, h: 60 };
-    ball = { x: canvas.width/2, y: canvas.height/2, r: 7, dx: 3, dy: 3 };
-    score = 0;
-    draw();
-  }
-
-  function drawRect(x,y,w,h) { ctx.fillRect(x,y,w,h); }
-  function drawBall() {
-    ctx.beginPath();
-    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
-    ctx.setLineDash([5, 5]);
-    ctx.moveTo(canvas.width/2, 0);
-    ctx.lineTo(canvas.width/2, canvas.height);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    drawRect(leftPaddle.x, leftPaddle.y, leftPaddle.w, leftPaddle.h);
-    drawRect(rightPaddle.x, rightPaddle.y, rightPaddle.w, rightPaddle.h);
-    drawBall();
-
-    if (upPressed) leftPaddle.y -= 5;
-    if (downPressed) leftPaddle.y += 5;
-    leftPaddle.y = Math.max(0, Math.min(canvas.height - leftPaddle.h, leftPaddle.y));
-
-    // AI
-    if (ball.y < rightPaddle.y + rightPaddle.h/2) rightPaddle.y -= 3;
-    else rightPaddle.y += 3;
-    rightPaddle.y = Math.max(0, Math.min(canvas.height - rightPaddle.h, rightPaddle.y));
-
-    ball.x += ball.dx;
-    ball.y += ball.dy;
-
-    if (ball.y - ball.r < 0 || ball.y + ball.r > canvas.height) ball.dy *= -1;
-
-    // paddle hits
-    if (ball.x - ball.r < leftPaddle.x + leftPaddle.w &&
-        ball.y > leftPaddle.y && ball.y < leftPaddle.y + leftPaddle.h) {
-      ball.dx *= -1;
-      score++;
-    }
-    if (ball.x + ball.r > rightPaddle.x &&
-        ball.y > rightPaddle.y && ball.y < rightPaddle.y + rightPaddle.h) {
-      ball.dx *= -1;
-    }
-
-    if (ball.x - ball.r < 0) {
-      endGame();
-      return;
-    }
-
-    currentScoreDiv.textContent = "Score: " + score;
-    requestAnimationFrame(draw);
-  }
-
-  async function updateHighScores(newScore) {
-    const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${HIGHSCORES_PATH}`;
-    try {
-      const res = await fetch(url);
-      let scores = res.ok ? await res.json() : [];
-      scores.push(newScore);
-      scores.sort((a,b)=>b-a);
-      scores = scores.slice(0,5);
-      highScoresList.innerHTML = scores.map(s=>`<li>${s}</li>`).join("");
-      // (GitHub commit logic omitted for brevity – add if needed)
-    } catch (e) { console.error(e); }
-  }
-
-  function endGame() { updateHighScores(score); }
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "ArrowUp") upPressed = true;
-    if (e.key === "ArrowDown") downPressed = true;
-  });
-  document.addEventListener("keyup", e => {
-    if (e.key === "ArrowUp") upPressed = false;
-    if (e.key === "ArrowDown") downPressed = false;
-  });
-
-  playBtn.addEventListener("click", initGame);
-  window.onload = initGame; // auto-start
-</script>
 </body>
 </html>
