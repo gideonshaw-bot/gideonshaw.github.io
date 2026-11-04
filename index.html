@@ -54,10 +54,11 @@ h1{font-family:var(--display);font-weight:300;font-size:clamp(48px,11vw,112px);
 .btn svg{width:16px;height:16px;fill:currentColor}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 
-dialog{width:min(480px,calc(100vw - 32px));box-sizing:border-box;padding:0;border:1px solid var(--line);
-  border-radius:20px;background:var(--ground-2);color:var(--text)}
-dialog::backdrop{background:rgba(5,14,11,.7);backdrop-filter:blur(4px)}
-.sheet{padding:28px;display:flex;flex-direction:column;gap:18px}
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  box-sizing:border-box;padding:16px;overflow-y:auto;background:rgba(5,14,11,.75)}
+.modal[hidden]{display:none}
+.sheet{width:min(480px,100%);box-sizing:border-box;margin:auto;border:1px solid var(--line);border-radius:20px;
+  background:var(--ground-2);color:var(--text);padding:28px;display:flex;flex-direction:column;gap:18px}
 .sheet header{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .sheet h2{font-family:var(--display);font-weight:500;font-size:26px;letter-spacing:-.02em;margin:0}
 .x{background:none;border:0;color:var(--muted);font-size:26px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
@@ -86,7 +87,7 @@ form .btn.primary{align-self:flex-start}
     </p>
     <div class="actions">
       <a class="btn primary" href="https://www.linkedin.com/in/gideonshaw/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.030 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4z"/></svg>
         LinkedIn
       </a>
       <button class="btn" type="button" id="open-contact">Contact me</button>
@@ -94,7 +95,7 @@ form .btn.primary{align-self:flex-start}
   </section>
 </main>
 
-<dialog id="contact" aria-labelledby="contact-title">
+<div class="modal" id="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
   <div class="sheet">
     <header>
       <h2 id="contact-title">Get in touch</h2>
@@ -112,7 +113,7 @@ form .btn.primary{align-self:flex-start}
       <p class="status" id="f-status" role="status"></p>
     </form>
   </div>
-</dialog>
+</div>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
 <script>
@@ -121,9 +122,13 @@ form .btn.primary{align-self:flex-start}
   const form = document.getElementById('contact-form');
   const status = document.getElementById('f-status');
   const send = document.getElementById('f-send');
-  document.getElementById('open-contact').addEventListener('click', () => dlg.showModal());
-  document.getElementById('close-contact').addEventListener('click', () => dlg.close());
-  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  const opener = document.getElementById('open-contact');
+  const open = () => { dlg.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('f-name').focus(); };
+  const close = () => { dlg.hidden = true; document.body.style.overflow = ''; opener.focus(); };
+  opener.addEventListener('click', open);
+  document.getElementById('close-contact').addEventListener('click', close);
+  dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !dlg.hidden) close(); });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
