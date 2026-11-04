@@ -28,22 +28,22 @@ html,body{height:100%}
 body{margin:0;background:var(--ground);color:var(--text);font-family:var(--body);
   font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 .bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(80% 70% at 85% 10%, var(--glow) 0%, transparent 60%),
-             radial-gradient(60% 50% at 0% 100%, var(--ground-2) 0%, transparent 70%);}
+  background:radial-gradient(70% 60% at 50% 0%, var(--glow) 0%, transparent 65%),
+             radial-gradient(60% 50% at 50% 110%, var(--ground-2) 0%, transparent 70%);}
 .bg::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 main{position:relative;z-index:1;min-height:100%;box-sizing:border-box;
-  display:flex;flex-direction:column;justify-content:center;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
   padding-block:clamp(32px,6vw,72px);
-  padding-left:max(clamp(16px,7vw,96px),env(safe-area-inset-left,0px));
-  padding-right:max(clamp(16px,7vw,96px),env(safe-area-inset-right,0px))}
-.id{display:flex;flex-direction:column;gap:28px;max-width:640px}
-h1{font-family:var(--display);font-weight:300;font-size:clamp(48px,10vw,104px);
-  line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px))}
+.id{display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;max-width:720px}
+h1{font-family:var(--display);font-weight:300;font-size:clamp(48px,11vw,112px);
+  line-height:1;letter-spacing:-.035em;margin:0;text-wrap:balance}
 .roles{margin:0;display:grid;gap:4px;font-size:17px;color:var(--muted)}
 .roles a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .2s}
 .roles a:hover,.roles a:focus-visible{border-color:var(--signal)}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;
   font:500 15px/1 var(--body);text-decoration:none;color:var(--text);cursor:pointer;
   border:1px solid var(--line);background:transparent;transition:background .2s,border-color .2s,color .2s}
@@ -52,6 +52,7 @@ h1{font-family:var(--display);font-weight:300;font-size:clamp(48px,10vw,104px);
 .btn.primary:hover,.btn.primary:focus-visible{background:var(--text);border-color:var(--text)}
 .btn svg{width:16px;height:16px;fill:currentColor}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+
 dialog{width:min(480px,calc(100vw - 32px));box-sizing:border-box;padding:0;border:1px solid var(--line);
   border-radius:20px;background:var(--ground-2);color:var(--text)}
 dialog::backdrop{background:rgba(5,14,11,.7);backdrop-filter:blur(4px)}
@@ -84,7 +85,7 @@ form .btn.primary{align-self:flex-start}
     </p>
     <div class="actions">
       <a class="btn primary" href="https://www.linkedin.com/in/gideonshaw/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.050 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4z"/></svg>
         LinkedIn
       </a>
       <button class="btn" type="button" id="open-contact">Contact me</button>
