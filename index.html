@@ -1,75 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gideon Shaw</title>
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      background: radial-gradient(circle at center, #fafafa 0%, #e6e6e6 100%);
-      color: #111;
-      text-align: center;
-      margin: 0;
-      padding: 60px 20px 120px; /* extra bottom padding to avoid cropping */
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    .card {
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      padding: 40px 50px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 520px;
-      background-color: #fff;
-    }
-    img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top; /* crops slightly to show more head */
-      margin-bottom: 25px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-    h1 {
-      font-size: 2.2em;
-      margin: 0.4em 0;
-    }
-    p {
-      font-size: 1.1em;
-      margin: 0.3em 0 1em 0;
-      line-height: 1.5;
-    }
-    a.button {
-      display: inline-block;
-      border: 1px solid #111;
-      border-radius: 30px;
-      padding: 8px 18px;
-      margin: 6px;
-      text-decoration: none;
-      color: #111;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    a.button:hover {
-      background: #111;
-      color: #fff;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gideon Shaw</title>
+<meta name="description" content="Gideon Shaw — General Partner, Elements VC. Founder, Invocap.">
+<meta property="og:title" content="Gideon Shaw">
+<meta property="og:description" content="General Partner, Elements VC · Founder, Invocap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500&family=Instrument+Sans:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0d1f19;
+  --ground-2:#14291f;
+  --glow:#1f4434;
+  --line:#2c5543;
+  --text:#e9efe9;
+  --muted:#9db5a8;
+  --signal:#b8e07a;
+  --danger:#f0a58f;
+  --display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--body);
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(80% 70% at 85% 10%, var(--glow) 0%, transparent 60%),
+             radial-gradient(60% 50% at 0% 100%, var(--ground-2) 0%, transparent 70%);}
+.bg::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+main{position:relative;z-index:1;min-height:100%;box-sizing:border-box;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(32px,6vw,72px);
+  padding-left:max(clamp(16px,7vw,96px),env(safe-area-inset-left,0px));
+  padding-right:max(clamp(16px,7vw,96px),env(safe-area-inset-right,0px))}
+.id{display:flex;flex-direction:column;gap:28px;max-width:640px}
+h1{font-family:var(--display);font-weight:300;font-size:clamp(48px,10vw,104px);
+  line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.roles{margin:0;display:grid;gap:4px;font-size:17px;color:var(--muted)}
+.roles a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .2s}
+.roles a:hover,.roles a:focus-visible{border-color:var(--signal)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;
+  font:500 15px/1 var(--body);text-decoration:none;color:var(--text);cursor:pointer;
+  border:1px solid var(--line);background:transparent;transition:background .2s,border-color .2s,color .2s}
+.btn:hover,.btn:focus-visible{border-color:var(--signal)}
+.btn.primary{background:var(--signal);color:var(--ground);border-color:var(--signal)}
+.btn.primary:hover,.btn.primary:focus-visible{background:var(--text);border-color:var(--text)}
+.btn svg{width:16px;height:16px;fill:currentColor}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+dialog{width:min(480px,calc(100vw - 32px));box-sizing:border-box;padding:0;border:1px solid var(--line);
+  border-radius:20px;background:var(--ground-2);color:var(--text)}
+dialog::backdrop{background:rgba(5,14,11,.7);backdrop-filter:blur(4px)}
+.sheet{padding:28px;display:flex;flex-direction:column;gap:18px}
+.sheet header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.sheet h2{font-family:var(--display);font-weight:500;font-size:26px;letter-spacing:-.02em;margin:0}
+.x{background:none;border:0;color:var(--muted);font-size:26px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+.x:hover{color:var(--text)}
+form{display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted);letter-spacing:.02em}
+input,textarea{font:400 15px/1.4 var(--body);color:var(--text);background:var(--ground);
+  border:1px solid var(--line);border-radius:10px;padding:11px 12px;box-sizing:border-box;width:100%}
+textarea{min-height:120px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.status{font-size:14px;margin:0;min-height:1.4em;color:var(--muted)}
+.status.ok{color:var(--signal)} .status.err{color:var(--danger)}
+form .btn.primary{align-self:flex-start}
+</style>
 </head>
 <body>
-  <div class="card">
-    <img src="gideonshaw.jpg" alt="Portrait of Gideon Shaw" />
+
+<div class="bg" aria-hidden="true"></div>
+
+<main>
+  <section class="id">
     <h1>Gideon Shaw</h1>
-    <p>General Partner, <a href="https://elements.vc" target="_blank">Elements VC</a><br>
-       Founder, <a href="https://www.invocap.com" target="_blank">Invocap</a></p>
-    <div>
-      <a href="https://www.linkedin.com/in/gideonshaw/" class="button" target="_blank">LinkedIn</a>
-      <a href="https://elements.vc" class="button" target="_blank">Elements VC</a>
-      <a href="https://www.invocap.com" class="button" target="_blank">Invocap</a>
+    <p class="roles">
+      <span>General Partner, <a href="https://elements.vc" target="_blank" rel="noopener">Elements VC</a></span>
+      <span>Founder, <a href="https://www.invocap.com" target="_blank" rel="noopener">Invocap</a></span>
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="https://www.linkedin.com/in/gideonshaw/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.050 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4z"/></svg>
+        LinkedIn
+      </a>
+      <button class="btn" type="button" id="open-contact">Contact me</button>
     </div>
+  </section>
+</main>
+
+<dialog id="contact" aria-labelledby="contact-title">
+  <div class="sheet">
+    <header>
+      <h2 id="contact-title">Get in touch</h2>
+      <button class="x" type="button" id="close-contact" aria-label="Close">×</button>
+    </header>
+    <form id="contact-form" novalidate>
+      <input type="hidden" name="access_key" value="74a8ee93-f1c8-4a1d-b7cf-6ecdff49e428">
+      <input type="hidden" name="subject" value="New message from gideonshaw.com">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+      <label for="f-name">Name<input id="f-name" name="name" required autocomplete="name"></label>
+      <label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+      <label for="f-msg">Message<textarea id="f-msg" name="message" required></textarea></label>
+      <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+      <button class="btn primary" type="submit" id="f-send">Send message</button>
+      <p class="status" id="f-status" role="status"></p>
+    </form>
   </div>
+</dialog>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script>
+(() => {
+  const dlg = document.getElementById('contact');
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('f-status');
+  const send = document.getElementById('f-send');
+  document.getElementById('open-contact').addEventListener('click', () => dlg.showModal());
+  document.getElementById('close-contact').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.className = 'status';
+    if (!form.checkValidity()) { status.textContent = 'Please fill in your name, a valid email and a message.'; status.classList.add('err'); return; }
+    const data = new FormData(form);
+    if (document.querySelector('.h-captcha iframe') && !data.get('h-captcha-response')) { status.textContent = 'Please complete the captcha.'; status.classList.add('err'); return; }
+    send.disabled = true; status.textContent = 'Sending…';
+    try {
+      const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+      const j = await r.json();
+      if (!j.success) throw new Error(j.message || 'Failed');
+      form.reset(); status.textContent = 'Thanks. Your message has been sent.'; status.classList.add('ok');
+    } catch (err) {
+      status.textContent = 'Your message could not be sent. Please try again in a moment.'; status.classList.add('err');
+    } finally { send.disabled = false; }
+  });
+})();
+</script>
 </body>
 </html>
